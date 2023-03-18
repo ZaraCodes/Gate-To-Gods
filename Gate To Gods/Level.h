@@ -3,15 +3,17 @@
 #include "Vector2.h"
 #include "GridTile.h"
 
+class GridTile;
+
 class Level
 {
 private:
-	// std::map<std::string, GridTile> tiles;
-	GridTile* tiles;
-	GridTile voidTile;
+    // std::map<std::string, GridTile> tiles;
+    GridTile* tiles;
+    GridTile* voidTile;
 
 public:
-	Level();
+    Level();
 
-	GridTile* GetTile(Vector2 position);
+    GridTile* GetTile(Vector2 position);
 };

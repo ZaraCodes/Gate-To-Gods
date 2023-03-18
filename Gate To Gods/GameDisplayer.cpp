@@ -28,7 +28,7 @@ void GameDisplayer::PrintScreen()
 
 void GameDisplayer::PrintHealth()
 {
-	std::cout << "HP: \x1b[0;91m" << player->GetHealthPoints() << '/' << player->GetMaxHealthPoints() << "\x1b[0m" << std::endl;
+	std::cout << "\x1b[0;0HHP: \x1b[0;91m" << player->GetHealthPoints() << '/' << player->GetMaxHealthPoints() << "\x1b[0m" << std::endl;
 }
 
 void GameDisplayer::PrintSeparator()
