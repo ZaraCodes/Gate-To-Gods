@@ -2,6 +2,10 @@
 
 Level::Level()
 {
+}
+
+Level::Level(int monsterAmount, MessageBox* messageBox)
+{
 	voidTile = new GridTile();
 	voidTile->SetWalkable(false);
 	voidTile->SetSymbol(' ');
@@ -9,6 +13,8 @@ Level::Level()
 
 	const int limit = 10;
 	tiles = new GridTile[limit * limit];
+	monsters = new Monster*[monsterAmount];
+	
 	for (int i = 0; i < limit; i++) {
 		for (int j = 0; j < limit; j++) {
 			Vector2 v(i, j);
@@ -21,6 +27,12 @@ Level::Level()
 			tiles[j * limit + i] = gridTile;
 		}
 	}
+
+	Vector2 pos(2, 2);
+	monsters[0] = new Monster(messageBox, 10, 4, 1, 0);
+	monsters[0]->position = pos;
+	GridTile* tile = GetTile(pos);
+	tile->SetMonster(monsters[0]);
 }
 
 GridTile* Level::GetTile(Vector2 position)

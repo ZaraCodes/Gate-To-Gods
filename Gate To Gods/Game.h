@@ -8,6 +8,7 @@ private:
 	Player player;
 	Level level;
 	GameDisplayer displayer;
+	MessageBox messageBox;
 
 	bool playing;
 

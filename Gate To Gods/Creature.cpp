@@ -1,6 +1,6 @@
 #include "Creature.h"
 
-Creature::Creature(int healthPoints, int attackPower, float accuracy, float critPropability, char symbol)
+Creature::Creature(MessageBox* messageBox, int healthPoints, int attackPower, float accuracy, float critPropability, char symbol)
 {
 	this->healthPoints = healthPoints;
 	this->maxHealthPoints = healthPoints;
@@ -9,6 +9,7 @@ Creature::Creature(int healthPoints, int attackPower, float accuracy, float crit
 	this->critPropability = critPropability;
 	this->symbol = symbol;
 	this->position = Vector2();
+	this->messageBox = messageBox;
 }
 
 bool Creature::Attack(Creature creature)

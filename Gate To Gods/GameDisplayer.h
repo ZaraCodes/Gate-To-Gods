@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Level.h"
 #include "Vector2.h"
+#include "MessageBox.h"
 #include <iostream>
 
 class GameDisplayer
@@ -9,12 +10,13 @@ class GameDisplayer
 public:
 	Player* player;
 	Level* level;
+	MessageBox* messageBox;
 
 	Vector2 screenSize;
 
 	//Methods
 	GameDisplayer();
-	GameDisplayer(int x, int y, Level* level, Player* player);
+	GameDisplayer(int x, int y, Level* level, Player* player, MessageBox* messageBox);
 	void PrintScreen();
 
 private:
@@ -23,5 +25,6 @@ private:
 	void PrintHealth();
 	void PrintSeparator();
 	void PrintLevel();
+	void PrintMessages();
 };
 

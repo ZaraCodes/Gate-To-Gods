@@ -133,6 +133,7 @@
     <ClCompile Include="Gate To Gods.cpp" />
     <ClCompile Include="GridTile.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="MessageBox.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="GameDisplayer.h" />
     <ClInclude Include="GridTile.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MessageBox.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Vector2.h" />

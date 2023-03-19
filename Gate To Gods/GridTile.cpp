@@ -42,6 +42,12 @@ void GridTile::SetSymbol(char symbol)
 
 bool GridTile::GetWalkable()
 {
+	if (walkable) {
+		if (player != nullptr || monster != nullptr) {
+			return false;
+		}
+		return walkable;
+	}
 	return walkable;
 }
 

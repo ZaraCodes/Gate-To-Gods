@@ -2,15 +2,17 @@
 
 Game::Game()
 {
+    messageBox = MessageBox();
+
     playing = true;
-    player = Player(20, 5, 1, 0.2f);
+    player = Player(&messageBox, 20, 5, 1, 0.2f);
     player.SetPosition(Vector2(2, 5));
 
-    level = Level();
+    level = Level(2, &messageBox);
     GridTile* starTile = level.GetTile(player.GetPosition());
     starTile->SetPlayer(&player);
 
-    displayer = GameDisplayer(71, 19, &level, &player);
+    displayer = GameDisplayer(71, 19, &level, &player, &messageBox);
 }
 
 void Game::DoGameLoop()
@@ -25,7 +27,10 @@ void Game::DoGameLoop()
 void Game::DoPlayerTurn()
 {
     std::string input = "";
+    std::cout << "> ";
     std::cin >> input;
+
+    std::cout << "\x1b[1A                                                 " << std::endl;
 
     if (input.length() > 0) {
         switch (input[0])

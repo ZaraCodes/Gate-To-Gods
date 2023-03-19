@@ -5,12 +5,13 @@ GameDisplayer::GameDisplayer()
 
 }
 
-GameDisplayer::GameDisplayer(int x, int y, Level* level, Player* player)
+GameDisplayer::GameDisplayer(int x, int y, Level* level, Player* player, MessageBox* messageBox)
 {
 	screenSize = Vector2((float) x, (float) y);
 
 	this->level = level;
 	this->player = player;
+	this->messageBox = messageBox;
 
 	screenSeparator = "";
 	for (int i = 0; i < x; i++) {
@@ -24,6 +25,7 @@ void GameDisplayer::PrintScreen()
 	PrintSeparator();
 	PrintLevel();
 	PrintSeparator();
+	PrintMessages();
 }
 
 void GameDisplayer::PrintHealth()
@@ -56,5 +58,12 @@ void GameDisplayer::PrintLevel()
 			std::cout << color << symbol;
 		}
 		std::cout << std::endl;
+	}
+}
+
+void GameDisplayer::PrintMessages()
+{
+	for (int i = 0; i < messageBox->maxAmount; i++) {
+		std::cout << messageBox->GetMessage(i) << std::endl;
 	}
 }
