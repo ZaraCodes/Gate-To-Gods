@@ -8,7 +8,7 @@ public:
 	Monster();
 	Monster(MessageBox* messageBox, int healthpoints, int attackPower, float accuracy, float critPropability);
 
-	virtual void PushTakeDamageMessage();
+	virtual void PushTakeDamageMessage(int damage);
 	virtual void PushDeathMessage();
 };
 

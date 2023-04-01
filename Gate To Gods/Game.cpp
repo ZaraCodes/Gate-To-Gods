@@ -9,8 +9,8 @@ Game::Game()
 	player.SetPosition(Vector2(2, 5));
 
 	level = Level(2, &messageBox);
-	GridTile* starTile = level.GetTile(player.GetPosition());
-	starTile->SetPlayer(&player);
+	GridTile* startTile = level.GetTile(player.GetPosition());
+	startTile->SetPlayer(&player);
 
 	displayer = GameDisplayer(71, 19, &level, &player, &messageBox);
 }

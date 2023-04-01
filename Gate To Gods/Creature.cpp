@@ -36,7 +36,9 @@ void Creature::SetHealthPoints(int newHealthPoints)
 int Creature::TakeDamage(int damage)
 {
 	if (healthPoints - damage <= 0) {
+		damage = healthPoints;
 		SetHealthPoints(0);
+		PushTakeDamageMessage(damage);
 		//Print Death Message
 		PushDeathMessage();
 		//TODO: Destruct Instance
@@ -44,14 +46,13 @@ int Creature::TakeDamage(int damage)
 	else {
 		SetHealthPoints(healthPoints - damage);
 		//Print Damage
-		PushTakeDamageMessage();
+		PushTakeDamageMessage(damage);
 	}
 	return 0;
 }
 
-void Creature::PushTakeDamageMessage()
+void Creature::PushTakeDamageMessage(int damage)
 {
-	messageBox->InsertNewMessage("meow");
 }
 
 void Creature::PushDeathMessage()

@@ -30,7 +30,7 @@ void Player::DoAction(Level* level, Vector2 direction)
 	}
 }
 
-void Player::PushTakeDamageMessage()
+void Player::PushTakeDamageMessage(int damage)
 {
 }
 

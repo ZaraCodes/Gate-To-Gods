@@ -24,7 +24,7 @@ public:
 	void SetHealthPoints(int newHealthPoints);
 	int TakeDamage(int damage);
 
-	virtual void PushTakeDamageMessage();
+	virtual void PushTakeDamageMessage(int damage);
 	virtual void PushDeathMessage();
 
 	Vector2 GetPosition();
