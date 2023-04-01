@@ -30,8 +30,10 @@ Vector2 GridTile::GetPosition()
 char GridTile::GetSymbol()
 {
 	if (player != nullptr) return player->symbol;
-	else if (monster != nullptr) return monster->symbol;
-	
+	else if (monster != nullptr) {
+		if (monster->GetHealthPoints() == 0) return '%';
+		return monster->symbol;
+	}
 	return symbol;
 }
 
@@ -43,12 +45,18 @@ void GridTile::SetSymbol(char symbol)
 bool GridTile::GetWalkable()
 {
 	if (walkable) {
-		if (player != nullptr || monster != nullptr) {
+		if (player != nullptr) {
 			return false;
 		}
-		return walkable;
+		if (monster != nullptr) {
+			if (monster->GetHealthPoints() == 0) {
+				return walkable;
+			}
+			return false;
+		}
+		return true;
 	}
-	return walkable;
+	return false;
 }
 
 void GridTile::SetWalkable(bool walkable)
@@ -84,4 +92,9 @@ void GridTile::SetPlayer(Player* player)
 void GridTile::SetMonster(Monster* monster)
 {
 	this->monster = monster;
+}
+
+Monster* GridTile::GetMonster()
+{
+	return monster;
 }

@@ -12,4 +12,7 @@ public:
     Player();
     Player(MessageBox* messageBox, int healthpoints, int attackPower, float accuracy, float critPropability);
     void DoAction(Level* level, Vector2 direction);
+
+    virtual void PushTakeDamageMessage();
+    virtual void PushDeathMessage();
 };

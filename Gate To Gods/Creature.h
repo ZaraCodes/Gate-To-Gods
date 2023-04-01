@@ -22,6 +22,10 @@ public:
 	int GetMaxHealthPoints();
 	int GetHealthPoints();
 	void SetHealthPoints(int newHealthPoints);
+	int TakeDamage(int damage);
+
+	virtual void PushTakeDamageMessage();
+	virtual void PushDeathMessage();
 
 	Vector2 GetPosition();
 	void SetPosition(Vector2 position);

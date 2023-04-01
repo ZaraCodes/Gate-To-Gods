@@ -64,6 +64,6 @@ void GameDisplayer::PrintLevel()
 void GameDisplayer::PrintMessages()
 {
 	for (int i = 0; i < messageBox->maxAmount; i++) {
-		std::cout << messageBox->GetMessage(i) << std::endl;
+		std::cout << "\x1b[2K" << messageBox->GetMessage(i) << std::endl;
 	}
 }

@@ -31,4 +31,5 @@ public:
     void SetVisible(bool visible);
     void SetPlayer(Player* player);
     void SetMonster(Monster* monster);
+    Monster* GetMonster();
 };

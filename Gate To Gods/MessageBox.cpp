@@ -18,7 +18,7 @@ void MessageBox::InsertNewMessage(std::string message)
 	}
 	else {
 		for (int i = 0; i < messageCount - 1; i++) {
-			messages[0] = messages[1];
+			messages[i] = messages[i + 1];
 		}
 		messages[messageCount - 1] = message;
 	}

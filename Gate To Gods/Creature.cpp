@@ -33,6 +33,31 @@ void Creature::SetHealthPoints(int newHealthPoints)
 	healthPoints = newHealthPoints;
 }
 
+int Creature::TakeDamage(int damage)
+{
+	if (healthPoints - damage <= 0) {
+		SetHealthPoints(0);
+		//Print Death Message
+		PushDeathMessage();
+		//Destruct Instance
+	}
+	else {
+		SetHealthPoints(healthPoints - damage);
+		//Print Damage
+		PushTakeDamageMessage();
+	}
+	return 0;
+}
+
+void Creature::PushTakeDamageMessage()
+{
+	messageBox->InsertNewMessage("meow");
+}
+
+void Creature::PushDeathMessage()
+{
+}
+
 Vector2 Creature::GetPosition()
 {
 	return position;

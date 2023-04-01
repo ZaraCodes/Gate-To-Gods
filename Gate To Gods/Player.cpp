@@ -18,8 +18,22 @@ void Player::DoAction(Level* level, Vector2 direction)
 		currentTile->SetPlayer(nullptr);
 		nextTile->SetPlayer(this);
 		position = position + direction;
-	}
+	} 
 	else {
-		messageBox->InsertNewMessage("U hit a wall");
+		Monster* monster = nextTile->GetMonster();
+		if (monster != nullptr) {
+			monster->TakeDamage(attackPower);
+		}
+		else {
+			messageBox->InsertNewMessage("U hit a wall");
+		}
 	}
+}
+
+void Player::PushTakeDamageMessage()
+{
+}
+
+void Player::PushDeathMessage()
+{
 }
