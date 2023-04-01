@@ -10,7 +10,7 @@ class Level
 private:
     GridTile* tiles;
     GridTile* voidTile;
-
+   
     Monster** monsters;
 
 public:
@@ -18,4 +18,5 @@ public:
     Level(int monsterAmount, MessageBox* messageBox);
 
     GridTile* GetTile(Vector2 position);
+    Monster** GetMonsters();
 };

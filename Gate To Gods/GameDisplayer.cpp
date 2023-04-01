@@ -25,6 +25,7 @@ void GameDisplayer::PrintScreen()
 	PrintSeparator();
 	PrintLevel();
 	PrintSeparator();
+	PrintTileContent();
 	PrintMessages();
 }
 
@@ -65,5 +66,14 @@ void GameDisplayer::PrintMessages()
 {
 	for (int i = 0; i < messageBox->maxAmount; i++) {
 		std::cout << "\x1b[2K" << messageBox->GetMessage(i) << std::endl;
+	}
+}
+
+void GameDisplayer::PrintTileContent()
+{
+	GridTile* tile = level->GetTile(player->position);
+	Monster* tileMonster = tile->GetMonster();
+	if (tileMonster != nullptr) {
+		std::cout << "\x1b[1A[" << tileMonster->name << "][empty]" << std::endl;
 	}
 }

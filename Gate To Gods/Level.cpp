@@ -42,3 +42,8 @@ GridTile* Level::GetTile(Vector2 position)
 	}
 	else return voidTile;
 }
+
+Monster** Level::GetMonsters()
+{
+	return monsters;
+}

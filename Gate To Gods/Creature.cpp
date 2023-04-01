@@ -12,9 +12,9 @@ Creature::Creature(MessageBox* messageBox, int healthPoints, int attackPower, fl
 	this->messageBox = messageBox;
 }
 
-bool Creature::Attack(Creature creature)
+bool Creature::Attack(Creature* creature)
 {
-	creature.SetHealthPoints(creature.GetHealthPoints() - attackPower);
+	creature->TakeDamage(attackPower);
 	return true;
 }
 

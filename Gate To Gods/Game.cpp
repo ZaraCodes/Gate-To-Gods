@@ -8,7 +8,7 @@ Game::Game()
 	player = Player(&messageBox, 20, 5, 1, 0.2f);
 	player.SetPosition(Vector2(2, 5));
 
-	level = Level(2, &messageBox);
+	level = Level(1, &messageBox);
 	GridTile* startTile = level.GetTile(player.GetPosition());
 	startTile->SetPlayer(&player);
 
@@ -21,6 +21,7 @@ void Game::DoGameLoop()
 	{
 		displayer.PrintScreen();
 		DoPlayerTurn();
+		DoNPCTurn();
 	}
 }
 
@@ -50,5 +51,23 @@ void Game::DoPlayerTurn()
 
 void Game::DoNPCTurn()
 {
+	Monster** levelMonsters = level.GetMonsters();
+	for (int i = 0; i < 1; i++) {
+		Monster* monster = levelMonsters[i];
+		if (monster == nullptr) continue;
+		if (monster->GetHealthPoints() == 0) continue;
 
+		Player* tilePlayer = level.GetTile(monster->position + Vector2(1, 0))->GetPlayer();
+		if (tilePlayer == nullptr) {
+			tilePlayer = level.GetTile(monster->position + Vector2(0, 1))->GetPlayer();
+			if (tilePlayer == nullptr) {
+				tilePlayer = level.GetTile(monster->position + Vector2(-1, 0))->GetPlayer();
+				if (tilePlayer == nullptr) {
+					tilePlayer = level.GetTile(monster->position + Vector2(0, -1))->GetPlayer();
+					if (tilePlayer == nullptr) continue;
+				}
+			}
+		}
+		monster->Attack(&player);
+	}
 }

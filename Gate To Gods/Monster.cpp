@@ -11,10 +11,10 @@ Monster::Monster(MessageBox* messageBox, int healthpoints, int attackPower, floa
 
 void Monster::PushTakeDamageMessage(int damage)
 {
-	messageBox->InsertNewMessage("You attack the " + name + " with \x1b[0;91m" + std::to_string(damage) + "\x1b[0m damage! They have \x1b[0;91m" + std::to_string(healthPoints) + "\x1b[0m HP left.");
+	messageBox->InsertNewMessage("You attack the \x1b[0;92m" + name + "\x1b[0m with \x1b[0;91m" + std::to_string(damage) + "\x1b[0m damage! They have \x1b[0;91m" + std::to_string(healthPoints) + "\x1b[0m HP left.");
 }
 
 void Monster::PushDeathMessage()
 {
-	messageBox->InsertNewMessage("The " + name + " collapsed on the ground.");
+	messageBox->InsertNewMessage("The \x1b[0;92m" + name + "\x1b[0m collapsed on the ground.");
 }

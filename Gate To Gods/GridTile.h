@@ -32,4 +32,5 @@ public:
     void SetPlayer(Player* player);
     void SetMonster(Monster* monster);
     Monster* GetMonster();
+    Player* GetPlayer();
 };

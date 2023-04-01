@@ -26,5 +26,6 @@ private:
 	void PrintSeparator();
 	void PrintLevel();
 	void PrintMessages();
+	void PrintTileContent();
 };
 

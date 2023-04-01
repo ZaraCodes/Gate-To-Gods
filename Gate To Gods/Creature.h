@@ -17,7 +17,7 @@ public:
 	char symbol;
 	
 	Creature(MessageBox* messageBox, int healthPoints, int attackPower, float accuracy, float critPropability, char symbol);
-	bool Attack(Creature creature);
+	bool Attack(Creature* creature);
 
 	int GetMaxHealthPoints();
 	int GetHealthPoints();
