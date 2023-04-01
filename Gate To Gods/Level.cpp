@@ -29,7 +29,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 	}
 
 	Vector2 pos(2, 2);
-	monsters[0] = new Monster(messageBox, 10, 4, 1, 0);
+	monsters[0] = new Monster(messageBox, 10, 4, 1, 0, "archeologist");
 	monsters[0]->position = pos;
 	GridTile* tile = GetTile(pos);
 	tile->SetMonster(monsters[0]);
