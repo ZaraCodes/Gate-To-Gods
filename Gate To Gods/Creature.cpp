@@ -39,7 +39,7 @@ int Creature::TakeDamage(int damage)
 		SetHealthPoints(0);
 		//Print Death Message
 		PushDeathMessage();
-		//Destruct Instance
+		//TODO: Destruct Instance
 	}
 	else {
 		SetHealthPoints(healthPoints - damage);

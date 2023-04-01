@@ -8,7 +8,6 @@ class GridTile;
 class Level
 {
 private:
-    // std::map<std::string, GridTile> tiles;
     GridTile* tiles;
     GridTile* voidTile;
 
