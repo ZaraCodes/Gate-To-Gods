@@ -15,6 +15,8 @@ Game::Game()
 	displayer = GameDisplayer(71, 19, &level, &player, &messageBox);
 }
 
+
+/// <summary>Executes the main game loop</summary>
 void Game::DoGameLoop()
 {
 	while (playing)
@@ -25,6 +27,7 @@ void Game::DoGameLoop()
 	}
 }
 
+/// <summary>Gets the player's input and executes that action</summary>
 void Game::DoPlayerTurn()
 {
 	int input = _getch();
@@ -49,6 +52,7 @@ void Game::DoPlayerTurn()
 	}
 }
 
+/// <summary>Loops through every npc and executes an action for each of them</summary>
 void Game::DoNPCTurn()
 {
 	Monster** levelMonsters = level.GetMonsters();

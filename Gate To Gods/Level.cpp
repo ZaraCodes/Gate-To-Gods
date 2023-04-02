@@ -1,9 +1,13 @@
 #include "Level.h"
 
+/// <summary>empty constructor, do not use</summary>
 Level::Level()
 {
 }
 
+/// <summary>Actual constructor</summary>
+/// <param name="monsterAmount">The amount of monsters on the map</param>
+/// <param name="messageBox">Reference to the message box instance</param>
 Level::Level(int monsterAmount, MessageBox* messageBox)
 {
 	voidTile = new GridTile();
@@ -36,6 +40,9 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 	tile->SetMonster(monsters[0]);
 }
 
+/// <summary>Gets a tile</summary>
+/// <param name="position">Position to return a tile from</param>
+/// <returns>The tile at the given position or a default tile</returns>
 GridTile* Level::GetTile(Vector2 position)
 {
 	if (position.y >= 0 && position.y < 10 && position.x >= 0 && position.x < 10) {
@@ -44,6 +51,10 @@ GridTile* Level::GetTile(Vector2 position)
 	else return voidTile;
 }
 
+/// <summary>
+/// Gets the monsters array
+/// </summary>
+/// <returns>Monster array</returns>
 Monster** Level::GetMonsters()
 {
 	return monsters;
