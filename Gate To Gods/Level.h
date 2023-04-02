@@ -4,6 +4,7 @@
 #include "GridTile.h"
 
 class GridTile;
+class Monster;
 
 class Level
 {

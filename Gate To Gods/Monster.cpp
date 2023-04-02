@@ -18,3 +18,12 @@ void Monster::PushDeathMessage()
 {
 	messageBox->InsertNewMessage("The \x1b[0;92m" + name + "\x1b[0m collapsed on the ground.");
 }
+
+void Monster::Move(GridTile* nextTile, GridTile* currentTile)
+{
+	if (nextTile->GetWalkable()) {
+		currentTile->SetMonster(nullptr);
+		nextTile->SetMonster(this);
+		SetPosition(nextTile->GetPosition());
+	}
+}

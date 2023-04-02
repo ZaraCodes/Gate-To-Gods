@@ -24,6 +24,11 @@ Vector2 GridTile::GetPosition() {
 	return position;
 }
 
+void GridTile::SetPosition(Vector2 position)
+{
+	this->position = position;
+}
+
 char GridTile::GetSymbol() {
 	if (player != nullptr) return player->symbol;
 	else if (monster != nullptr) {

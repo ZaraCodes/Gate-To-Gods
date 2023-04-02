@@ -64,7 +64,20 @@ void Game::DoNPCTurn()
 				tilePlayer = level.GetTile(monster->position + Vector2(-1, 0))->GetPlayer();
 				if (tilePlayer == nullptr) {
 					tilePlayer = level.GetTile(monster->position + Vector2(0, -1))->GetPlayer();
-					if (tilePlayer == nullptr) continue;
+					
+					if (tilePlayer == nullptr) {
+						// follow the player
+						Vector2 diff = monster->position - player.position;
+						GridTile* currentTile = level.GetTile(monster->position);
+						if (diff.GetMagnitude() < 5) {
+							Vector2 newPosition = monster->position + Vector2(1, 0);
+							GridTile* nextTile = level.GetTile(newPosition);
+
+							// move?
+							monster->Move(nextTile, currentTile);
+						}
+						continue;
+					}
 				}
 			}
 		}

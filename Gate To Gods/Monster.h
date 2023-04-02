@@ -1,6 +1,10 @@
 #pragma once
 #include "Creature.h"
 #include "MessageBox.h"
+#include "Level.h"
+#include "GridTile.h"
+
+class GridTile;
 
 class Monster : public Creature
 {
@@ -12,5 +16,7 @@ public:
 
 	virtual void PushTakeDamageMessage(int damage);
 	virtual void PushDeathMessage();
+
+	void Move(GridTile* nextTile, GridTile* currentTile);
 };
 

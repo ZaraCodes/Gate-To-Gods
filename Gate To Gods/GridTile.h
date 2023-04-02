@@ -21,6 +21,7 @@ public:
     GridTile();
     GridTile(Vector2 position, char symbol, bool walkable);
     Vector2 GetPosition();
+    void SetPosition(Vector2 position);
     char GetSymbol();
     void SetSymbol(char symbol);
     bool GetWalkable();

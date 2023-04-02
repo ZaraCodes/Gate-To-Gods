@@ -24,6 +24,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 				gridTile.SetWalkable(false);
 				gridTile.SetSymbol('#');
 			}
+			gridTile.SetPosition(v);
 			tiles[j * limit + i] = gridTile;
 		}
 	}
