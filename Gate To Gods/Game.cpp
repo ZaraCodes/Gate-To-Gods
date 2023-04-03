@@ -69,7 +69,22 @@ void Game::DoNPCTurn()
 						Vector2 diff = monster->position - player.position;
 						GridTile* currentTile = level.GetTile(monster->position);
 						if (diff.GetMagnitude() < 5) {
-							Vector2 newPosition = monster->position + Vector2(1, 0);
+							Vector2 newPosition = monster->position + Vector2();
+
+							if (diff.x > 0) {
+								newPosition.x -= 1;
+							}
+							else if (diff.x < 0) {
+								newPosition.x += 1;
+							}
+							else if (diff.y > 0) {
+								newPosition.y -= 1;
+							}
+							else if (diff.y < 0) {
+								newPosition.y += 1;
+							}
+							else continue;
+							
 							GridTile* nextTile = level.GetTile(newPosition);
 
 							// move?
@@ -81,5 +96,11 @@ void Game::DoNPCTurn()
 			}
 		}
 		monster->Attack(&player);
+		if (player.GetHealthPoints() == 0) {
+			playing = false;
+			// player.PushDeathMessage();
+			displayer.PrintScreen();
+			int input = _getch();
+		}
 	}
 }

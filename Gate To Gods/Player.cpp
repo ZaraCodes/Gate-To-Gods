@@ -32,9 +32,10 @@ void Player::DoAction(Level* level, Vector2 direction)
 
 void Player::PushTakeDamageMessage(int damage)
 {
-	messageBox->InsertNewMessage("You take \x1b[0;91m" + std::to_string(damage) + "\x1b[0m damage. You still have \x1b[0;91m" + std::to_string(healthPoints) + "\x1b[0m HP left.");
+	messageBox->InsertNewMessage("You take \x1b[0;91m" + std::to_string(damage) + "\x1b[0m damage. You have \x1b[0;91m" + std::to_string(healthPoints) + "\x1b[0m HP left.");
 }
 
 void Player::PushDeathMessage()
 {
+	messageBox->InsertNewMessage("You got overpowered. Press any key to exit.");
 }
