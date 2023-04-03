@@ -61,15 +61,10 @@ void Game::DoNPCTurn()
 		if (monster == nullptr) continue;
 		if (monster->GetHealthPoints() == 0) continue;
 
-		Player* tilePlayer = level.GetTile(monster->position + Vector2(1, 0))->GetPlayer();
-		if (tilePlayer == nullptr) {
-			tilePlayer = level.GetTile(monster->position + Vector2(0, 1))->GetPlayer();
-			if (tilePlayer == nullptr) {
-				tilePlayer = level.GetTile(monster->position + Vector2(-1, 0))->GetPlayer();
-				if (tilePlayer == nullptr) {
-					tilePlayer = level.GetTile(monster->position + Vector2(0, -1))->GetPlayer();
-					
-					if (tilePlayer == nullptr) {
+		if (level.GetTile(monster->position + Vector2(1, 0))->GetPlayer() == nullptr) {
+			if (level.GetTile(monster->position + Vector2(0, 1))->GetPlayer() == nullptr) {
+				if (level.GetTile(monster->position + Vector2(-1, 0))->GetPlayer() == nullptr) {				
+					if (level.GetTile(monster->position + Vector2(0, -1))->GetPlayer() == nullptr) {
 						// follow the player
 						Vector2 diff = monster->position - player.position;
 						GridTile* currentTile = level.GetTile(monster->position);

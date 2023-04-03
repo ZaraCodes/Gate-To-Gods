@@ -1,5 +1,12 @@
 #include "Creature.h"
 
+/// <summary>General constructor for all creatures</summary>
+/// <param name="messageBox">Reference to the messagebox for pushing messages</param>
+/// <param name="healthPoints">Health Points of the creature</param>
+/// <param name="attackPower">Attack Points of the creature</param>
+/// <param name="accuracy">Propability of hitting the target</param>
+/// <param name="critPropability">Propability of landing a critical hit</param>
+/// <param name="symbol">The symbol that's shown on the tile this creature is on</param>
 Creature::Creature(MessageBox* messageBox, int healthPoints, int attackPower, float accuracy, float critPropability, char symbol)
 {
 	this->healthPoints = healthPoints;
@@ -12,17 +19,24 @@ Creature::Creature(MessageBox* messageBox, int healthPoints, int attackPower, fl
 	this->messageBox = messageBox;
 }
 
+/// <summary>Attacks a creature</summary>
+/// <param name="creature">The creature to attack</param>
+/// <returns>unused value</returns>
 bool Creature::Attack(Creature* creature)
 {
 	creature->TakeDamage(attackPower);
 	return true;
 }
 
+/// <summary>Gets the max amount of hp for the creature</summary>
+/// <returns>max hp</returns>
 int Creature::GetMaxHealthPoints()
 {
 	return maxHealthPoints;
 }
 
+/// <summary>Get the current amount of hp for the creature</summary>
+/// <returns>the current hp</returns>
 int Creature::GetHealthPoints()
 {
 	return healthPoints;
