@@ -47,5 +47,5 @@ void Player::PushTakeDamageMessage(int damage)
 /// <summary>Pushes a death message for the player to the messagebox</summary>
 void Player::PushDeathMessage()
 {
-	messageBox->InsertNewMessage("You got overpowered. Press any key to exit.");
+	messageBox->InsertNewMessage("\x1b[0;91mYou got overpowered.\x1b[0m Press any key to exit.");
 }

@@ -80,7 +80,14 @@ void Game::DoNPCTurn()
 	for (int i = 0; i < 1; i++) {
 		Monster* monster = levelMonsters[i];
 		if (monster == nullptr) continue;
-		if (monster->GetHealthPoints() == 0) continue;
+		if (monster->GetHealthPoints() == 0) {
+			if (monster->GetHasKey()) {
+				monster->SetHasKey(false);
+				GridTile* currentTile = level->GetTile(monster->position);
+				currentTile->SetHasKey(true);
+			}
+			continue;
+		}
 
 		if (level->GetTile(monster->position + Vector2(1, 0))->GetPlayer() == nullptr) {
 			if (level->GetTile(monster->position + Vector2(0, 1))->GetPlayer() == nullptr) {

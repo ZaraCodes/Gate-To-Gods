@@ -8,6 +8,7 @@ protected:
 	int healthPoints;
 	int maxHealthPoints;
 	int attackPower;
+	bool hasKey;
 	float accuracy;
 	float critPropability;
 	MessageBox* messageBox;
@@ -29,5 +30,8 @@ public:
 
 	Vector2 GetPosition();
 	void SetPosition(Vector2 position);
+
+	bool GetHasKey();
+	void SetHasKey(bool value);
 };
 

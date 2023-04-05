@@ -14,6 +14,7 @@ private:
     bool walkable;
     bool discovered;
     bool visible;
+    bool hasKey;
     Monster* monster;
     Player* player;
 
@@ -34,4 +35,6 @@ public:
     void SetMonster(Monster* monster);
     Monster* GetMonster();
     Player* GetPlayer();
+    bool GetHasKey();
+    void SetHasKey(bool value);
 };

@@ -1,9 +1,7 @@
 #include "Monster.h"
 
 /// <summary>Empty constructor, do not use</summary>
-Monster::Monster() : Creature(nullptr, 0, 0, 0, 0, 's')
-{
-}
+Monster::Monster() : Creature(nullptr, 0, 0, 0, 0, 's') { }
 
 /// <summary>Constructor of the monster class</summary>
 /// <param name="messageBox">Reference to the messagebox</param>

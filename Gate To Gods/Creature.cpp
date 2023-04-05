@@ -17,6 +17,7 @@ Creature::Creature(MessageBox* messageBox, int healthPoints, int attackPower, fl
 	this->symbol = symbol;
 	this->position = Vector2();
 	this->messageBox = messageBox;
+	this->hasKey = false;
 }
 
 /// <summary>Attacks a creature</summary>
@@ -55,7 +56,7 @@ int Creature::TakeDamage(int damage)
 		PushTakeDamageMessage(damage);
 		//Print Death Message
 		PushDeathMessage();
-		//TODO: Destruct Instance
+		return 1;
 	}
 	else {
 		SetHealthPoints(healthPoints - damage);
@@ -81,4 +82,14 @@ Vector2 Creature::GetPosition()
 void Creature::SetPosition(Vector2 position)
 {
 	this->position = position;
+}
+
+bool Creature::GetHasKey()
+{
+	return hasKey;
+}
+
+void Creature::SetHasKey(bool value)
+{
+	hasKey = value;
 }

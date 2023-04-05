@@ -62,6 +62,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 	Vector2 pos(2, 2);
 	monsters[0] = new Monster(messageBox, 10, 4, 1, 0, "archeologist");
 	monsters[0]->position = pos;
+	// monsters[0]->SetHasKey(true);
 	GridTile* tile = GetTile(pos);
 	tile->SetMonster(monsters[0]);
 }
@@ -77,9 +78,7 @@ GridTile* Level::GetTile(Vector2 position)
 	else return voidTile;
 }
 
-/// <summary>
-/// Gets the monsters array
-/// </summary>
+/// <summary>Gets the monsters array</summary>
 /// <returns>Monster array</returns>
 Monster** Level::GetMonsters()
 {

@@ -9,6 +9,7 @@ GridTile::GridTile() {
 	visible = true;
 	monster = nullptr;
 	player = nullptr;
+	hasKey = false;
 }
 
 /// <summary>Constructor for a grid tile</summary>
@@ -23,6 +24,7 @@ GridTile::GridTile(Vector2 position, char symbol, bool walkable) {
 	visible = true;
 	monster = nullptr;
 	player = nullptr;
+	hasKey = false;
 }
 
 /// <summary>Returns the position of the tile</summary>
@@ -127,4 +129,14 @@ Monster* GridTile::GetMonster() {
 /// <returns>reference to the player or null if they're not on this tile</returns>
 Player* GridTile::GetPlayer() {
 	return player;
+}
+
+bool GridTile::GetHasKey()
+{
+	return hasKey;
+}
+
+void GridTile::SetHasKey(bool value)
+{
+	hasKey = value;
 }

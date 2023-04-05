@@ -28,5 +28,7 @@ private:
 	void PrintLevel();
 	void PrintMessages();
 	void PrintTileContent();
+
+	std::string GetTileItem(GridTile* tile);
 };
 
