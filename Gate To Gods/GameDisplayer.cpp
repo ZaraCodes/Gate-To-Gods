@@ -1,15 +1,17 @@
 #include "GameDisplayer.h"
 
-GameDisplayer::GameDisplayer()
-{
+/// <summary>Empty constructor, do not use</summary>
+GameDisplayer::GameDisplayer() { }
 
-}
+/// <summary>Destructor of the game displayer class</summary>
+GameDisplayer::~GameDisplayer() { }
 
-GameDisplayer::~GameDisplayer()
-{
-
-}
-
+/// <summary>Initializes the game displayer</summary>
+/// <param name="x">width of the visible area</param>
+/// <param name="y">height of the visible area</param>
+/// <param name="level">reference to the level</param>
+/// <param name="player">reference to the player</param>
+/// <param name="messageBox">reference to the messagebox</param>
 GameDisplayer::GameDisplayer(int x, int y, Level* level, Player* player, MessageBox* messageBox)
 {
 	screenSize = Vector2((float) x, (float) y);
@@ -24,6 +26,7 @@ GameDisplayer::GameDisplayer(int x, int y, Level* level, Player* player, Message
 	}
 }
 
+/// <summary>Prints the current game state into the console</summary>
 void GameDisplayer::PrintScreen()
 {
 	PrintHealth();
@@ -34,16 +37,19 @@ void GameDisplayer::PrintScreen()
 	PrintMessages();
 }
 
+/// <summary>Prints the health line</summary>
 void GameDisplayer::PrintHealth()
 {
 	std::cout << "\x1b[0;0HHP: \x1b[0;91m" << player->GetHealthPoints() << '/' << player->GetMaxHealthPoints() << "\x1b[0m   " << std::endl;
 }
 
+/// <summary>Prints the separation line</summary>
 void GameDisplayer::PrintSeparator()
 {
 	std::cout << screenSeparator << std::endl;
 }
 
+/// <summary>Prints the visible playground</summary>
 void GameDisplayer::PrintLevel()
 {
 	for (int y = player->position.y - ((screenSize.y - 1) / 2); y < player->position.y + ((screenSize.y) / 2); y++) {
@@ -67,6 +73,7 @@ void GameDisplayer::PrintLevel()
 	}
 }
 
+/// <summary>Prints the messagebox content</summary>
 void GameDisplayer::PrintMessages()
 {
 	for (int i = 0; i < messageBox->maxAmount; i++) {
@@ -74,6 +81,7 @@ void GameDisplayer::PrintMessages()
 	}
 }
 
+/// <summary>Prints the content of a tile if necessary</summary>
 void GameDisplayer::PrintTileContent()
 {
 	GridTile* tile = level->GetTile(player->position);

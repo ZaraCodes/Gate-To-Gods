@@ -1,5 +1,6 @@
 #include "MessageBox.h"
 
+/// <summary>Initializes the messagebox</summary>
 MessageBox::MessageBox()
 {
 	maxAmount = 5;
@@ -10,6 +11,7 @@ MessageBox::MessageBox()
 	messageCount = 0;
 }
 
+/// <summary>Destructs the class</summary>
 MessageBox::~MessageBox()
 {
 	if (messages != nullptr) {
@@ -18,6 +20,8 @@ MessageBox::~MessageBox()
 	}
 }
 
+/// <summary>Inserts a new message into the messagebox</summary>
+/// <param name="message"></param>
 void MessageBox::InsertNewMessage(std::string message)
 {
 	if (messageCount < maxAmount) {
@@ -32,6 +36,9 @@ void MessageBox::InsertNewMessage(std::string message)
 	}
 }
 
+/// <summary>Searches for a message at the given index</summary>
+/// <param name="index">message index</param>
+/// <returns>a message</returns>
 std::string MessageBox::GetMessage(int index)
 {
 	if (index < messages->length()) {

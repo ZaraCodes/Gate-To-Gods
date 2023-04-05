@@ -1,5 +1,6 @@
 #include "Game.h"
 
+/// <summary>Initializes the game</summary>
 Game::Game()
 {
 	messageBox = new MessageBox();
@@ -15,6 +16,7 @@ Game::Game()
 	displayer = new GameDisplayer(71, 19, level, player, messageBox);
 }
 
+/// <summary>Destructs the game</summary>
 Game::~Game()
 {
 	if (displayer != nullptr) {
