@@ -9,6 +9,7 @@ class Monster;
 class Level
 {
 private:
+    int monsterAmount;
     GridTile* tiles;
     GridTile* voidTile;
    
@@ -16,6 +17,7 @@ private:
 
 public:
     Level();
+    ~Level();
     Level(int monsterAmount, MessageBox* messageBox);
 
     GridTile* GetTile(Vector2 position);

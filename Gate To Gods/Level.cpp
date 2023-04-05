@@ -5,6 +5,31 @@ Level::Level()
 {
 }
 
+/// <summary>Destructor of the level</summary>
+Level::~Level()
+{
+	if (voidTile != nullptr) {
+		delete voidTile;
+		voidTile = nullptr;
+	}
+
+	if (tiles != nullptr) {
+		delete tiles;
+		tiles = nullptr;
+	}
+
+	if (monsters != nullptr) {
+		for (int i = 0; i < monsterAmount; i++) {
+			if (monsters[i] != nullptr) {
+				delete monsters[i];
+				monsters[i] = nullptr;
+			}
+		}
+		delete monsters;
+		monsters = nullptr;
+	}
+}
+
 /// <summary>Actual constructor</summary>
 /// <param name="monsterAmount">The amount of monsters on the map</param>
 /// <param name="messageBox">Reference to the message box instance</param>
@@ -14,6 +39,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 	voidTile->SetWalkable(false);
 	voidTile->SetSymbol(' ');
 
+	this->monsterAmount = monsterAmount;
 
 	const int limit = 10;
 	tiles = new GridTile[limit * limit];

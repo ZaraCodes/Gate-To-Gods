@@ -8,6 +8,7 @@ public:
 	int maxAmount;
 
 	MessageBox();
+	~MessageBox();
 	void InsertNewMessage(std::string message);
 	std::string GetMessage(int index);
 };

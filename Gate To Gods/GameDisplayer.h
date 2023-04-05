@@ -16,6 +16,7 @@ public:
 
 	//Methods
 	GameDisplayer();
+	~GameDisplayer();
 	GameDisplayer(int x, int y, Level* level, Player* player, MessageBox* messageBox);
 	void PrintScreen();
 

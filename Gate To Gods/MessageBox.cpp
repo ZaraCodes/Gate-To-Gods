@@ -10,6 +10,14 @@ MessageBox::MessageBox()
 	messageCount = 0;
 }
 
+MessageBox::~MessageBox()
+{
+	if (messages != nullptr) {
+		delete[] messages;
+		messages = nullptr;
+	}
+}
+
 void MessageBox::InsertNewMessage(std::string message)
 {
 	if (messageCount < maxAmount) {

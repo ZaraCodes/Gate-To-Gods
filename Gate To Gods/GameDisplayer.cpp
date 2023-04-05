@@ -5,6 +5,11 @@ GameDisplayer::GameDisplayer()
 
 }
 
+GameDisplayer::~GameDisplayer()
+{
+
+}
+
 GameDisplayer::GameDisplayer(int x, int y, Level* level, Player* player, MessageBox* messageBox)
 {
 	screenSize = Vector2((float) x, (float) y);

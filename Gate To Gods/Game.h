@@ -6,10 +6,10 @@
 class Game
 {
 private:
-	Player player;
-	Level level;
-	GameDisplayer displayer;
-	MessageBox messageBox;
+	Player* player;
+	Level* level;
+	GameDisplayer* displayer;
+	MessageBox* messageBox;
 
 	bool playing;
 
@@ -18,6 +18,7 @@ private:
 
 public:
 	Game();
+	~Game();
 	void DoGameLoop();
 };
 

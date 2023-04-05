@@ -5,6 +5,8 @@
 /// <returns>termination code</returns>
 int main()
 {
-    Game game;
-    game.DoGameLoop();
+    Game* game = new Game();
+    game->DoGameLoop();
+    delete game;
+    game = nullptr;
 }
