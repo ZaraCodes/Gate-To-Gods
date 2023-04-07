@@ -7,7 +7,7 @@ Game::Game()
 
 	playing = true;
 	player = new Player(messageBox, 20, 5, 1, 0.2f);
-	player->SetPosition(Vector2(2, 5));
+	player->SetPosition(Vector2(23, 26));
 
 	level = new Level(1, messageBox);
 	GridTile* startTile = level->GetTile(player->GetPosition());

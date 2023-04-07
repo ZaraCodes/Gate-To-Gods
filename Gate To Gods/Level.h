@@ -10,6 +10,7 @@ class Level
 {
 private:
     int monsterAmount;
+    int levelSize;
     GridTile* tiles;
     GridTile* voidTile;
    

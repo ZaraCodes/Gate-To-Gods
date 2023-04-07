@@ -87,7 +87,7 @@ void GameDisplayer::PrintTileContent()
 	GridTile* tile = level->GetTile(player->position);
 	Monster* tileMonster = tile->GetMonster();
 	if (tileMonster != nullptr) {
-		std::cout << "\x1b[1A[" << tileMonster->name << "]["<< GetTileItem(tile) << "]" << std::endl;
+		std::cout << "\x1b[1A[" << tileMonster->name << "][" << GetTileItem(tile) << "]" << std::endl;
 	}
 	else {
 		std::string tileItem = GetTileItem(tile);
