@@ -68,6 +68,12 @@ void Game::DoPlayerTurn()
 	case 'd':
 		player->DoAction(level, Vector2(1, 0));
 		break;
+	case 'e':
+		player->PickUp(level->GetTile(player->GetPosition()));
+		break;
+	case 'q':
+		player->Drop(level->GetTile(player->GetPosition()));
+		break;
 	default:
 		break;
 	}

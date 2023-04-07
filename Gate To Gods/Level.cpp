@@ -75,6 +75,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 				}
 				else if (i == 22 && j == 7) {
 					gridTile.SetSymbol('<');	// set locked tile here
+					gridTile.SetRequireKey(true);
 				}
 			}
 			else if (i >= 26 && i < 33 && j > 3 && j < 16) {
@@ -109,7 +110,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 	Vector2 pos(2, 2);
 	monsters[0] = new Monster(messageBox, 10, 4, 1, 0, "archeologist");
 	monsters[0]->position = pos;
-	// monsters[0]->SetHasKey(true);
+	monsters[0]->SetHasKey(true);
 	GridTile* tile = GetTile(pos);
 	tile->SetMonster(monsters[0]);
 }

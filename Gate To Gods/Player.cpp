@@ -31,8 +31,46 @@ void Player::DoAction(Level* level, Vector2 direction)
 		if (monster != nullptr) {
 			monster->TakeDamage(attackPower);
 		}
+		else if (nextTile->GetRequiresKey()) {
+			if (GetHasKey()) {
+				messageBox->InsertNewMessage("u did it widepeepoHappy");
+			}
+			else {
+				messageBox->InsertNewMessage("The entrance to the temple is locked. You have to find a key first.");
+			}
+		}
+	}
+}
+
+/// <summary>Picks up an item if there is one on the tile</summary>
+/// <param name="tile">Reference to the tile that is being interacted with</param>
+void Player::PickUp(GridTile* tile)
+{
+	if (tile != nullptr) {
+		if (tile->GetHasKey()) {
+			if (GetHasKey()) {
+				messageBox->InsertNewMessage("Your inventory is full, you can't pick up any more keys.");
+			}
+			else {
+				SetHasKey(true);
+				tile->SetHasKey(false);
+				messageBox->InsertNewMessage("You picked up a key.");
+			}
+		}
 		else {
-			messageBox->InsertNewMessage("U hit a wall");
+			messageBox->InsertNewMessage("There is nothing to pick up...");
+		}
+	}
+}
+
+
+void Player::Drop(GridTile* tile)
+{
+	if (tile != nullptr) {
+		if (!tile->GetHasKey() && GetHasKey()) {
+			SetHasKey(false);
+			tile->SetHasKey(true);
+			messageBox->InsertNewMessage("You dropped a key.");
 		}
 	}
 }

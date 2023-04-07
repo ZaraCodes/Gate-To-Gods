@@ -10,6 +10,7 @@ GridTile::GridTile() {
 	monster = nullptr;
 	player = nullptr;
 	hasKey = false;
+	requiresKey = false;
 }
 
 /// <summary>Constructor for a grid tile</summary>
@@ -25,6 +26,7 @@ GridTile::GridTile(Vector2 position, char symbol, bool walkable) {
 	monster = nullptr;
 	player = nullptr;
 	hasKey = false;
+	requiresKey = false;
 }
 
 /// <summary>Returns the position of the tile</summary>
@@ -48,6 +50,7 @@ char GridTile::GetSymbol() {
 		if (monster->GetHealthPoints() == 0) return '%';
 		return monster->symbol;
 	}
+	if (hasKey) return '%';
 	return symbol;
 }
 
@@ -70,6 +73,7 @@ bool GridTile::GetWalkable() {
 			}
 			return false;
 		}
+		if (GetRequiresKey()) return false;
 		return true;
 	}
 	return false;
@@ -131,12 +135,34 @@ Player* GridTile::GetPlayer() {
 	return player;
 }
 
+/// <summary>
+/// Gets wether a key is located on this tile.
+/// </summary>
+/// <returns>true if there is a key, false otherwise</returns>
 bool GridTile::GetHasKey()
 {
 	return hasKey;
 }
 
+/// <summary>Sets a key to the tile</summary>
+/// <param name="value">true means key, false otherwise</param>
 void GridTile::SetHasKey(bool value)
 {
 	hasKey = value;
+}
+
+/// <summary>
+/// Gets wether the tile requires a key to be walked on
+/// </summary>
+/// <returns>true if it requires a key</returns>
+bool GridTile::GetRequiresKey()
+{
+	return requiresKey;
+}
+
+/// <summary>Sets if the tile requires a key</summary>
+/// <param name="value">wether the tile requires a key</param>
+void GridTile::SetRequireKey(bool value)
+{
+	requiresKey = value;
 }

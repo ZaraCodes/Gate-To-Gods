@@ -15,6 +15,7 @@ private:
     bool discovered;
     bool visible;
     bool hasKey;
+    bool requiresKey;
     Monster* monster;
     Player* player;
 
@@ -37,4 +38,6 @@ public:
     Player* GetPlayer();
     bool GetHasKey();
     void SetHasKey(bool value);
+    bool GetRequiresKey();
+    void SetRequireKey(bool value);
 };
