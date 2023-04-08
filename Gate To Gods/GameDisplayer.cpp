@@ -103,7 +103,7 @@ void GameDisplayer::PrintTileContent()
 std::string GameDisplayer::GetTileItem(GridTile* tile)
 {
 	if (tile->GetHasKey()) {
-		return "Key";
+		return "\x1b[0;33mKey\x1b[0m";
 	}
 	return "empty";
 }

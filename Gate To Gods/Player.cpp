@@ -17,7 +17,7 @@ Player::Player(MessageBox* messageBox, int healthpoints, int attackPower, float 
 /// <summary>Executes an action for the player</summary>
 /// <param name="level">Reference to the level</param>
 /// <param name="direction">The direction in which an action will get executed</param>
-void Player::DoAction(Level* level, Vector2 direction)
+void Player::DoAction(Level* level, Vector2 direction, bool* isPlaying)
 {
 	GridTile* nextTile = level->GetTile(position + direction);
 	GridTile* currentTile = level->GetTile(position);
@@ -33,10 +33,11 @@ void Player::DoAction(Level* level, Vector2 direction)
 		}
 		else if (nextTile->GetRequiresKey()) {
 			if (GetHasKey()) {
-				messageBox->InsertNewMessage("u did it widepeepoHappy");
+				messageBox->InsertNewMessage("The temple is now unlocked. But what will you see inside? Find out... in the \x1b[0;33mpaid DLC\x1b[0m!");
+				*isPlaying = false;
 			}
 			else {
-				messageBox->InsertNewMessage("The entrance to the temple is locked. You have to find a key first.");
+				messageBox->InsertNewMessage("The entrance to the temple is locked. You have to find a \x1b[0;33mkey\x1b[0m first.");
 			}
 		}
 	}
@@ -54,7 +55,7 @@ void Player::PickUp(GridTile* tile)
 			else {
 				SetHasKey(true);
 				tile->SetHasKey(false);
-				messageBox->InsertNewMessage("You picked up a key.");
+				messageBox->InsertNewMessage("You picked up a \x1b[0;33mkey\x1b[0m.");
 			}
 		}
 		else {
@@ -70,7 +71,7 @@ void Player::Drop(GridTile* tile)
 		if (!tile->GetHasKey() && GetHasKey()) {
 			SetHasKey(false);
 			tile->SetHasKey(true);
-			messageBox->InsertNewMessage("You dropped a key.");
+			messageBox->InsertNewMessage("You dropped a \x1b[0;33mkey\x1b[0m.");
 		}
 	}
 }

@@ -19,13 +19,7 @@ Level::~Level()
 	}
 
 	if (monsters != nullptr) {
-		for (int i = 0; i < monsterAmount; i++) {
-			if (monsters[i] != nullptr) {
-				delete monsters[i];
-				monsters[i] = nullptr;
-			}
-		}
-		delete monsters;
+		delete[] monsters;
 		monsters = nullptr;
 	}
 }
@@ -43,8 +37,9 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 
 	levelSize = 40;
 	tiles = new GridTile[levelSize * levelSize];
-	monsters = new Monster*[monsterAmount];
+	monsters = new Monster[99];
 	
+	// creates the level layout
 	for (int i = 0; i < levelSize; i++) {
 		for (int j = 0; j < levelSize; j++) {
 			Vector2 v(i, j);
@@ -74,7 +69,7 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 					gridTile.SetSymbol('#');
 				}
 				else if (i == 22 && j == 7) {
-					gridTile.SetSymbol('<');	// set locked tile here
+					gridTile.SetSymbol('<');
 					gridTile.SetRequireKey(true);
 				}
 			}
@@ -107,12 +102,24 @@ Level::Level(int monsterAmount, MessageBox* messageBox)
 		}
 	}
 
-	Vector2 pos(2, 2);
-	monsters[0] = new Monster(messageBox, 10, 4, 1, 0, "archeologist");
-	monsters[0]->position = pos;
-	monsters[0]->SetHasKey(true);
-	GridTile* tile = GetTile(pos);
-	tile->SetMonster(monsters[0]);
+	monsters[0] = Monster(messageBox, 10, 2, 1, 0, "archeologist");
+	monsters[0].position = Vector2(2, 2);
+	monsters[0].SetHasKey(true);
+	monsters[1] = Monster(messageBox, 12, 3, 1, 0, "guard");
+	monsters[1].position = Vector2(15, 13);
+	monsters[2] = Monster(messageBox, 12, 4, 1, 0, "guard");
+	monsters[2].position = Vector2(17, 13);
+	monsters[3] = Monster(messageBox, 12, 3, 1, 0, "archeologist");
+	monsters[3].position = Vector2(30, 7);
+
+	GridTile* tile = GetTile(monsters[0].GetPosition());
+	tile->SetMonster(&monsters[0]);
+	tile = GetTile(monsters[1].GetPosition());
+	tile->SetMonster(&monsters[1]);
+	tile = GetTile(monsters[2].GetPosition());
+	tile->SetMonster(&monsters[2]);
+	tile = GetTile(monsters[3].GetPosition());
+	tile->SetMonster(&monsters[3]);
 }
 
 /// <summary>Gets a tile</summary>
@@ -128,7 +135,14 @@ GridTile* Level::GetTile(Vector2 position)
 
 /// <summary>Gets the monsters array</summary>
 /// <returns>Monster array</returns>
-Monster** Level::GetMonsters()
+Monster* Level::GetMonsters()
 {
 	return monsters;
+}
+
+/// <summary>Returns the monster amount</summary>
+/// <returns>the monster amount</returns>
+int Level::GetMonsterAmount()
+{
+	return monsterAmount;
 }

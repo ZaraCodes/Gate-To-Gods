@@ -9,7 +9,7 @@ Game::Game()
 	player = new Player(messageBox, 20, 5, 1, 0.2f);
 	player->SetPosition(Vector2(23, 26));
 
-	level = new Level(1, messageBox);
+	level = new Level(4, messageBox);
 	GridTile* startTile = level->GetTile(player->GetPosition());
 	startTile->SetPlayer(player);
 
@@ -40,11 +40,17 @@ Game::~Game()
 /// <summary>Executes the main game loop</summary>
 void Game::DoGameLoop()
 {
+	std::cout << "\x1b[2J";
 	while (playing)
 	{
 		displayer->PrintScreen();
 		DoPlayerTurn();
-		DoNPCTurn();
+		if (playing) 
+			DoNPCTurn();
+		else {
+			displayer->PrintScreen();
+			_getch();
+		}
 	}
 }
 
@@ -55,18 +61,19 @@ void Game::DoPlayerTurn()
 	switch (input) {
 	case 'x':
 		playing = false;
+		messageBox->InsertNewMessage("You quit the game...");
 		break;
 	case 'w':
-		player->DoAction(level, Vector2(0, -1));
+		player->DoAction(level, Vector2(0, -1), &playing);
 		break;
 	case 'a':
-		player->DoAction(level, Vector2(-1, 0));
+		player->DoAction(level, Vector2(-1, 0), &playing);
 		break;
 	case 's':
-		player->DoAction(level, Vector2(0, 1));
+		player->DoAction(level, Vector2(0, 1), &playing);
 		break;
 	case 'd':
-		player->DoAction(level, Vector2(1, 0));
+		player->DoAction(level, Vector2(1, 0), &playing);
 		break;
 	case 'e':
 		player->PickUp(level->GetTile(player->GetPosition()));
@@ -82,9 +89,9 @@ void Game::DoPlayerTurn()
 /// <summary>Loops through every npc and executes an action for each of them</summary>
 void Game::DoNPCTurn()
 {
-	Monster** levelMonsters = level->GetMonsters();
-	for (int i = 0; i < 1; i++) {
-		Monster* monster = levelMonsters[i];
+	Monster* levelMonsters = level->GetMonsters();
+	for (int i = 0; i < level->GetMonsterAmount(); i++) {
+		Monster* monster = &levelMonsters[i];
 		if (monster == nullptr) continue;
 		if (monster->GetHealthPoints() == 0) {
 			if (monster->GetHasKey()) {
@@ -132,7 +139,6 @@ void Game::DoNPCTurn()
 		monster->Attack(player);
 		if (player->GetHealthPoints() == 0) {
 			playing = false;
-			// player.PushDeathMessage();
 			displayer->PrintScreen();
 			int input = _getch();
 		}

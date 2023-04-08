@@ -14,7 +14,7 @@ private:
     GridTile* tiles;
     GridTile* voidTile;
    
-    Monster** monsters;
+    Monster* monsters;
 
 public:
     Level();
@@ -22,5 +22,6 @@ public:
     Level(int monsterAmount, MessageBox* messageBox);
 
     GridTile* GetTile(Vector2 position);
-    Monster** GetMonsters();
+    Monster* GetMonsters();
+    int GetMonsterAmount();
 };

@@ -43,11 +43,16 @@ int Creature::GetHealthPoints()
 	return healthPoints;
 }
 
+/// <summary>Sets the creature's health points</summary>
+/// <param name="newHealthPoints">The new hp</param>
 void Creature::SetHealthPoints(int newHealthPoints)
 {
 	healthPoints = newHealthPoints;
 }
 
+/// <summary>Applies damage to this creature</summary>
+/// <param name="damage">the amount of hp lost</param>
+/// <returns>unused value</returns>
 int Creature::TakeDamage(int damage)
 {
 	if (healthPoints - damage <= 0) {
@@ -66,29 +71,40 @@ int Creature::TakeDamage(int damage)
 	return 0;
 }
 
+/// <summary>Pushes the take damage message to the messagebox</summary>
+/// <param name="damage">the amount of damage</param>
 void Creature::PushTakeDamageMessage(int damage)
 {
 }
 
+/// <summary>Pushes the death message to the messagebox</summary>
 void Creature::PushDeathMessage()
 {
 }
 
+/// <summary>Returns the creature's position</summary>
+/// <returns>The creature's position</returns>
 Vector2 Creature::GetPosition()
 {
 	return position;
 }
 
+/// <summary>Sets the creature's position</summary>
+/// <param name="position">The new position</param>
 void Creature::SetPosition(Vector2 position)
 {
 	this->position = position;
 }
 
+/// <summary>Returns if the creature currently has a key</summary>
+/// <returns>true if the creature has a key</returns>
 bool Creature::GetHasKey()
 {
 	return hasKey;
 }
 
+/// <summary>Sets if the creature has a key</summary>
+/// <param name="value">boolean that sets if the creature will have a key</param>
 void Creature::SetHasKey(bool value)
 {
 	hasKey = value;

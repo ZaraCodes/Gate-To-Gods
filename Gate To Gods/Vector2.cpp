@@ -61,6 +61,9 @@ Vector2 Vector2::operator/(float scalar)
 	return result;
 }
 
+/// <summary>Compares two vectors</summary>
+/// <param name="b">The other vector</param>
+/// <returns>true if the vectors have equal values, else false</returns>
 bool Vector2::operator==(Vector2 b)
 {
 	if (x == b.x && y == b.y) return true;
